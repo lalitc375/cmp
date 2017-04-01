@@ -1,35 +1,46 @@
+
+
 <?php
+//Input(name,mobile,password,firebase,email)
 
 include("serverInfo.php");
 $args = json_decode(file_get_contents("php://input"));
-$con = mysql_connect($server,$suname,$password);
-mysql_select_db($suffix.$database.$prefix,$con);
-if($args->firstName!="" && $args->lastName!="" && $args->userName!="" &&$args->password!="")
-	{	
-		$query="select * from users where userName='".$userName."'and password='".md5($password)."' ";
-		$run=mysql_query($query);
-		$count=mysql_num_rows($run);
+$con = new mysqli($server,$suname,$password,$database);
+
+if($con->connect_error) die($con->connect_error);
+//$con = mysql_connect($server,$suname,$password);
+//mysql_select_db($suffix.$database.$prefix,$con);
+if($args->name!="" && $args->mobile!="" && $args->password!="" && $args->firebase!="" && $args->email!="")
+	{
+		$query="select * from user where name='".$args->name."'and password='".md5($args->password)."' ";
+		$result = $con->query($query);
+		//$run=mysql_query($query);
+
+		//$count=mysql_num_rows($run);
+		$rows = $result->num_rows;
 		//echo $count;
-		if($count==0)
+		if($rows==0)
 		 {
-		 	$name=$args->firstName." ".$args->lastName;
+		 	//$name=$args->firstName." ".$args->lastName;
 		 	//echo $count;
 
-		 
-		 	$rec="INSERT INTO users VALUES ('".$name."','".$args->userName."','".md5($args->password)."');";
-		 	//echo $rec;
-			
-			if(mysql_query($rec,$con))
+
+		 	$rec="INSERT INTO user VALUES ('','$args->name','$args->mobile','$args->password','$args->firebase','$args->email')";
+
+      $result = $con->query($rec);
+			//echo $result;
+			if($result)
 				$arr = array('signupstatus' => 1,'msg'=>'User created Successfully.');
-			else
-				$arr = array('signupstatus' => 2,'msg'=>'User created Successfully.');
-		 }
-		 else
-		 	$arr = array('signupstatus' => 3,'msg'=>'User already exist.');
-		
+			else{
+				$arr = array('signupstatus' => 0,'msg'=>'Something Went Wrong.');
+			}
 	}
-else 
-		$arr = array('signupstatus' => 4,'msg'=>'Fields cannot be Empty.');
+	else if($rows != 0){
+		$arr = array('signupstatus' => 2,'msg'=>'User already exist.');
+	}
+}
+  else
+		$arr = array('signupstatus' => 3,'msg'=>'Fields cannot be Empty.');
+
 	echo json_encode($arr);
-	//echo 1;
 ?>
