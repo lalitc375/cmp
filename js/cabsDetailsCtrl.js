@@ -41,14 +41,14 @@
 			Data=angular.fromJson(data);
 			if(Data.incrementstatus==1)
 				//alert("Cab Increased Successfully");
-					;
+				$scope.getCabs();
 			else
 				alert("try after SomeTime");
 
 			//alert(Data);
 		});
 		$scope.flag=1;
-		$scope.getCabs();
+		
  	};
  	$scope.decreaseCab=function()
  	{
@@ -58,14 +58,14 @@
 			//alert(data);
 			Data=angular.fromJson(data);
 			if(Data.incrementstatus==1)
-					;
+				$scope.getCabs();
 				//alert("Cab decreased Successfully");
 			else
 				alert(Data.msg);
 			//alert(Data);
 		});
 		$scope.flag=1;
-		$scope.getCabs()
+	//	$scope.getCabs();
  	};
  /*	$http.post("bin/check.php").success(function(data,status){
  		Data=angular.fromJson(data);

@@ -12,6 +12,16 @@ $query = "SELECT * from cabs where at_airport='$args->airportname'";
 $result = $con->query($query);
 
 $row = mysqli_fetch_array($result);
+
+$query1 = "SELECT * from cabs where at_airport='$args->airportname'";
+
+
+$result1= $con->query($query1);
+$row1 = mysqli_fetch_array($result1);
+
+
+
+
 if($row[1] == 0){
   $arr = array('incrementstatus' => 0,'msg'=>'Cannot be done 0 cabs avalaible.');
 }
