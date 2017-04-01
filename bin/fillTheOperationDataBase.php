@@ -1,9 +1,10 @@
 <?php
-$db_hostname = "localhost";
-$db_username = "root";
-$db_password = "toor";
-$db_database="cmp";
-$connection = new mysqli($db_hostname,$db_username,$db_password,$db_database);
+
+
+
+include("serverInfo.php");
+
+$connection = new mysqli($server,$suname,$password,$database);
 $prefix="";
 	$suffix="";
 
