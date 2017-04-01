@@ -1,27 +1,30 @@
 <?php
+$db_hostname = "localhost";
+$db_username = "root";
+$db_password = "toor";
+$db_database="cmp";
+$connection = new mysqli($db_hostname,$db_username,$db_password,$db_database);
+$prefix="";
+	$suffix="";
+
+if($connection->connect_error) die($connection->connect_error);
 session_start();
-include("serverInfo.php");
+	
+
 $args = json_decode(file_get_contents("php://input"));
-mysql_connect($server,$suname,$password);
-mysql_select_db($database);
-
-if($args->userName!=""  && $args->password!="")
+if($args->email_id!=""  && $args->password!="")
 {	
-
-	$userName=$args->userName;
+	$useremail=$args->email_id;
 	$password=$args->password;
-	$query="select * from users where userName='".$userName."'and password='".md5($password)."' ";
-	$run=mysql_query($query);	
-	$count=mysql_num_rows($run);
-	//echo($count);
-	$result=mysql_fetch_assoc($run);
-	if($count==1)
+	$query="select * from user where email_id='$useremail'and password='$password'";
+	$run=$connection->query($query);	
+	
+	if($run->num_rows==1)
 	{
-		
-		$_SESSION['userName']=$result['userName'];
-		$_SESSION['name']=$result['name'];
+		$row=$run->fetch_assoc();
+		$_SESSION['email_id']=$row['email_id'];
+		$_SESSION['mobile_number']=$row['mobile_number'];
 		$arr = array('loginstatus' => 1);
-		$result=mysql_fetch_assoc($run);
 	}
 	else
 	{
