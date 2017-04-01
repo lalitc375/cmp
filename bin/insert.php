@@ -23,7 +23,7 @@ if(isset($_POST['name']) && isset($_POST['mobile']) && isset($_POST['password'])
   if($rows==0)
    {
 
-    $rec="INSERT INTO user (name,mobile_number,password,firebase_id,email_id,usermode) VALUES ($name','$mobile','$password','$firebase','$email','$usermode')";
+    $rec="INSERT INTO user (name,mobile_number,password,firebase_id,email_id,usermode) VALUES ('$name','$mobile','$password','$firebase','$email','$usermode')";
 
     $result = $con->query($rec);
     //echo $result;
