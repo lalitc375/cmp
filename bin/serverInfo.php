@@ -1,6 +1,6 @@
 <?php
 
-	$database="JobAllocation";
+	$database="cmp";
 	$server='localhost';
 	$suname='root';
 	$password='toor';
