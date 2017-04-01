@@ -1,4 +1,5 @@
 <?php
+
 $db_hostname = "localhost";
 $db_username = "root";
 $db_password = "toor";
@@ -24,7 +25,7 @@ $search=array_search($weekday,$dayarr);
 	$query="select * from flight_schedule where  at_airport_id='$airport'";
 	$run=$connection->query($query);
 	$count=$run->num_rows;	
-	//echo $count;
+	echo $count;
 	$counter=0;
 	if($count>0)
 	{
@@ -36,7 +37,7 @@ $search=array_search($weekday,$dayarr);
 			if($ans[$search]==1){
 				/*echo $row['flight_id'];*/
 				$query="insert into operational_data values ('','".$date."','".$row['flight_id']."','".$row['schedule_departure']."',0,'".$row['schedule_arrival']."',0,'".$row['at_airport_id']."',0,0)";
-				
+				echo $query;
 				$run2=$connection->query($query);
 				if($run2)
 					$counter++;
