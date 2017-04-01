@@ -36,7 +36,7 @@ $search=array_search($weekday,$dayarr);
 
 			if($ans[$search]==1){
 				/*echo $row['flight_id'];*/
-				$query="insert into operational_data values ('','".$date."','".$row['flight_id']."','".$row['schedule_departure']."',0,'".$row['schedule_arrival']."',0,'".$row['at_airport_id']."',0,0)";
+				$query="insert into operational_data(data_date,flight_id,schedule_depature,delay_in_schedule_depature, schedule_arrival,delay_in_schedule_arrival,at_airport_id,first_notification_sent,second_notification_sent )  values ('','".$date."','".$row['flight_id']."','".$row['schedule_departure']."',0,'".$row['schedule_arrival']."',0,'".$row['at_airport_id']."',0,0)";
 				echo $query;
 				$run2=$connection->query($query);
 				if($run2)
