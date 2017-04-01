@@ -28,12 +28,10 @@ $search=array_search($weekday,$dayarr);
 		for($j=0;$j<$count;$j++){
 			$row=$run->fetch_assoc();
 		
- $ans=$row['running_days'];
+ 	$ans=$row['running_days'];
 
 	if($ans[$search]==1){
 			array_push($flight,$row['flight_id']);
-
-
 	}	
 	}echo json_encode($flight);
 
