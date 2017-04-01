@@ -1,10 +1,18 @@
 <?php
 
+<<<<<<< HEAD
 $db_hostname = "localhost";
 $db_username = "root";
 $db_password = "toor";
 $db_database="cmp";
 $connection = new mysqli($db_hostname,$db_username,$db_password,$db_database);
+=======
+
+
+include("serverInfo.php");
+
+$connection = new mysqli($server,$suname,$password,$database);
+>>>>>>> c15d3cf17b821cc9ca9f9c4cf2f1697e8bca66d1
 $prefix="";
 	$suffix="";
 
