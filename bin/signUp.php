@@ -1,7 +1,7 @@
 
 
 <?php
-//Input(name,mobile,password,firebase,email)
+//Input(name,mobile,password,firebase,email,usermode)
 
 include("serverInfo.php");
 $args = json_decode(file_get_contents("php://input"));
@@ -10,7 +10,7 @@ $con = new mysqli($server,$suname,$password,$database);
 if($con->connect_error) die($con->connect_error);
 //$con = mysql_connect($server,$suname,$password);
 //mysql_select_db($suffix.$database.$prefix,$con);
-if($args->name!="" && $args->mobile!="" && $args->password!="" && $args->firebase!="" && $args->email!="")
+if($args->name!="" && $args->mobile!="" && $args->password!="" && $args->firebase!="" && $args->email!="" && $args->usermode!="")
 	{
 		$query="select * from user where name='".$args->name."'and password='".md5($args->password)."' ";
 		$result = $con->query($query);
@@ -25,7 +25,7 @@ if($args->name!="" && $args->mobile!="" && $args->password!="" && $args->firebas
 		 	//echo $count;
 
 
-		 	$rec="INSERT INTO user VALUES ('','$args->name','$args->mobile','$args->password','$args->firebase','$args->email')";
+		 	$rec="INSERT INTO user VALUES ('','$args->name','$args->mobile','$args->password','$args->firebase','$args->email','$args->usermode')";
 
       $result = $con->query($rec);
 			//echo $result;
