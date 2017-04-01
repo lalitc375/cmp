@@ -15,8 +15,4 @@ $result = $con->query($query);
 $row = mysqli_fetch_array($result);
 
 echo $row[1];
-
-
-
-
  ?>
