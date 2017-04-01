@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/angular-min.js"></script>
-    <script type="text/javascript" src="js/loginCtrl.js"></script>
+    <script type="text/javascript" src="js/cabsDetailsCtrl.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
 
     <style type="text/css">
@@ -32,7 +32,7 @@
 	</script>
 		
 </head>
-<body ng-app="mainApp" ng-controller="loginCtrl">
+<body >
 	<header>
 	<div class="navbar-fixed green darken-1">
     <nav class="#3d5afe indigo accent-3" role="navigation">
@@ -70,11 +70,50 @@
   	
   	</div>
 	</header>
-	<main ng-app="mainApp" ng-controller="loginCtrl">
+	<main ng-app="mainApp" ng-controller="cabsDetailsCtrl">
 		<div class="container">
-		
+		  <h3 class="center-align">Airports Authority of India</h3>
+      <h5 class="center-align">Select Airport</h5>
+      <div class="row">
+      <div class="col s4 offset-s4">
+
+      <div class="input-field col s12">
+              
+              <div input-field>
+                <select class="browser-default" ng-model="airport">
+                               <option >allahabad-lxi</option>
+                              <option >lucknow-lko</option>
+              </select>
+
+            <br>
+            <br>
+            <br>
+            </div>
+     
 			
 		</div>
+
+    </div>
+    <div class="row">
+      <div class="col s4 offset-s4">
+              <a class="waves-effect waves-light btn" ng-click="getCabs()">Get Cabs</a>
+      </div>
+      
+    </div>
+    <p ng-show="flag" class="center-align">
+    Current number of Cabs at {{airport}} is {{cabs}} 
+    </p>
+    <div class="row"  ng-show="flag" >
+      <div class="col s4 offset-s2">
+              <a class="waves-effect waves-light btn" ng-click="increaseCab()">Increase Cabs</a>
+      </div>
+      <div class="col s4 offset-s2">
+              <a class="waves-effect waves-light btn" ng-click="decreaseCab()">Decrease Cabs</a>
+      </div>
+    </div>
+    </div>
+
+    </div>
 	</main>
 	<footer>
   <div class="container">
