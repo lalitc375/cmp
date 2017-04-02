@@ -18,7 +18,7 @@ while($rows--){
 $row = mysqli_fetch_array($result);
 array_push($ans,$row[0]);
 }
-print_r(json_encode($ans));
+echo json_encode($ans);
 //echo json_encode($result[at_airport]);
 
 
