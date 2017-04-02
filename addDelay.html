@@ -1,24 +1,15 @@
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-   
-    <title>Pushpak</title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-      <script type="text/javascript" src="js/angular-min.js"></script>
-     <script type="text/javascript" src="js/addDelayCtrl.js"></script> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-     <script src="js/bootstrap.min.js"></script>
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
-  <body ng-app="mainApp" ng-controller="addDelayCtrl">
+  <body ng-app="mainApp" ng-controller="addDelayCtrl" style="background-image: url(a.jpg);">
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-   
+
     <nav class="navbar" style="background:blue;">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -29,8 +20,8 @@
       <li><a href="createEvent.html" style="color:white;">CreateEvent</a></li>
       <li><a href="addDelay.html" style="color:white;">Add Delay</a></li>
       <li><a href="cabsPresent.html" style="color:white;">Cabs Details</a></li>
-    <li> <a href="bin/logout.php">Logout</a></li>
-    
+    <li><a href="#" style="float:right;">logout</a></li>
+
     </ul>
   </div>
 </nav>
@@ -38,42 +29,45 @@
   <div class="row">
       <h3>Select Airport</h3>
       <br>
-     
+
           <select ng-model="airportId" >
             <option ng-repeat="x in airportList">{{x}}</option>
           </select>
-       <br>    
+       <br>
       <h3> Date of Flight</h3>
       <br>
-      <input type="text" name="" ng-model="inputDate.day"> /
-      <input type="text" name="" ng-model="inputDate.month"> /
-      <input type="text" name="" ng-model="inputDate.year"> 
+      <input type="text" placeholder="day" name="" ng-model="inputDate.day"> /
+      <input type="text" placeholder="month" name="" ng-model="inputDate.month"> /
+      <input type="text" placeholder="year" name="" ng-model="inputDate.year">
      </div>
-      <button type="button" class="btn btn-success btn btn-lg" ng-click="getFlights()">Get Flight</button>
+      <button type="button" class="btn btn-success btn btn-md" style="margin-left:730px; margin-top:-25px;" ng-click="getFlights()">Get Flight</button>
       <div  ng-show="flag">
        <h3> Select Flight</h3> <br>
         <br>
-     
+
+
           <select ng-model="flightId" >
-            <option ng-repeat="x in flightList">{{x}}</option>
+            <option ng-repeat="x in flightList" >{{x}}</option>
           </select>
-       <br>  
-           Delay in Arrival<br>
-           <input type="number" ng-model="delayInArrival.hour">
-           <input type="number"  ng-model="delayInArrival.minute">
-           <input type="number"  ng-model="delayInArrival.second">
-           Delay in Departure<br>
-            <input type="number" ng-model="delayInDeparture.hour">
-           <input type="number"  ng-model="delayInDeparture.minute">
-           <input type="number"  ng-model="delayInDeparture.second">
+       <br>  <br>
+          <h4> Delay in Arrival</h4>
+           <input type="number" placeholder="Hours" style="margin-left:55px;" ng-model="delayInArrival.hour">
+           <input type="number" placeholder="minutes" ng-model="delayInArrival.minute">
+           <input type="number" placeholder="seconds"  ng-model="delayInArrival.second">
+		<br>
+<br>
+           <h4>Delay in Departure</h4>
+            <input type="number" placeholder="Hours" style="margin-left:55px;" ng-model="delayInDeparture.hour">
+           <input type="number"  placeholder="minutes" ng-model="delayInDeparture.minute">
+           <input type="number"  placeholder="seconds" ng-model="delayInDeparture.second">
       </div>
-           <button type="button" class="btn btn-default" ng-click="addDelay()">Update Delay</button>
-      
-  </div>
-    
+           <button type="button" class="btn btn-success" style="margin-left:730px; margin-top:-25px;" ng-click="addDelay()">Update Delay</button>
+
   </div>
 
-    
+  </div>
+
+
 
 
   </body>
