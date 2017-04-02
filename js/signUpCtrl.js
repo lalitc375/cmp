@@ -5,6 +5,7 @@
 
  	$scope.userName="";
  	$scope.password="";
+
  	$http.post("bin/check.php").success(function(data,status){
  	Data=angular.fromJson(data);
  	if(Data.loginstatus==1)
@@ -12,7 +13,7 @@
  	});
  	$scope.signUp=function()
  	{
- 		alert("sign Up");
+ 		//alert("sign Up");
  		if($scope.name!=""&&$scope.userName!=""&&$scope.password!="")
  		{
  			$http.post("bin/signUp.php",{name:$scope.name,password:$scope.password
@@ -23,7 +24,10 @@
  										}).success(function(data,status){
  										Data=angular.fromJson(data);
  										if(Data.signupstatus==1)
+ 										{
  											alert("User Created Successfully");
+ 											window.location.href="login.html";
+ 										}
  										else if(Data.signupstatus==3)
  											alert("User Already Exist");
  										else if(Data.signupstatus==3)
