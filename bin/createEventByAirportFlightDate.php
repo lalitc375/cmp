@@ -13,7 +13,7 @@ if($args->at_airport_id!=""  && $args->date!="" && $args->flight_id!="" && $args
 	$airport=$args->at_airport_id;
 	$date=$args->date;
 	$flight=$args->flight_id;
-	$user_id=$_SESSION['user_id'];
+	echo $user_id=$_SESSION['user_id'];
 	$weekday = date('l', strtotime($date)); 
 
 		
