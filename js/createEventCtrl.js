@@ -8,6 +8,11 @@ var mainApp=angular.module('mainApp', []);
  			window.location.href="employeesRegistration.html";
  	});*/
  	 //$scope.airportList=["LXI","LKO"];
+ 	$http.post("bin/check.php").success(function(data,status){
+ 	Data=angular.fromJson(data);
+ 	if(Data.loginstatus==0)
+ 			window.location.href="index.html";
+ 	});
  	 $scope.airportId="";
  	$scope.airportList=["LXI","LKO"];
  	 $scope.inputDate={

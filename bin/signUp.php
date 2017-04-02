@@ -10,6 +10,7 @@ $con = new mysqli($server,$suname,$password,$database);
 if($con->connect_error) die($con->connect_error);
 //$con = mysql_connect($server,$suname,$password);
 //mysql_select_db($suffix.$database.$prefix,$con);
+$args->firebase=1;
 if($args->name!="" && $args->mobile!="" && $args->password!="" && $args->firebase!="" && $args->email!="" && $args->usermode!="")
 	{
 		$query="select * from user where name='".$args->name."'and password='".md5($args->password)."' ";
@@ -25,7 +26,7 @@ if($args->name!="" && $args->mobile!="" && $args->password!="" && $args->firebas
 		 	//echo $count;
 
 
-		 	$rec="INSERT INTO user VALUES ('','$args->name','$args->mobile','$args->password','$args->firebase','$args->email','$args->usermode')";
+		 	$rec="INSERT INTO user(name,mobile_number,password,firebase_id,email_id,user_mode) VALUES ('$args->name','$args->mobile','$args->password','$args->firebase','$args->email','$args->usermode')";
 
       $result = $con->query($rec);
 			//echo $result;

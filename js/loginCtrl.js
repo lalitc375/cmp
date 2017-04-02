@@ -9,10 +9,15 @@
  	});*/
  	$scope.userName="";
  	$scope.password="";
+ 	$http.post("bin/check.php").success(function(data,status){
+ 	Data=angular.fromJson(data);
+ 	if(Data.loginstatus==1)
+ 			window.location.href="flightTracking.html";
+ 	});
  	$scope.login=function()
 	{
 		//alert("Hello World");
-		$http.post("bin/login.php",{userName:$scope.userName,password:$scope.password}).
+		$http.post("bin/login.php",{email_id:$scope.userName,password:$scope.password}).
 		success(function(data,status)
 		{
 			//alert(data);

@@ -2,6 +2,11 @@
  mainApp.controller("cabsDetailsCtrl",function ($scope,$http) {
  	// body...
  	/*alert("Lalit");*/
+ 	$http.post("bin/check.php").success(function(data,status){
+ 	Data=angular.fromJson(data);
+ 	if(Data.loginstatus==0)
+ 			window.location.href="index.html";
+ 	});
  	$scope.airportList=["allahabad-lxi","lucknow-lko"];
  	/*$http.get("bin/airport_list.php"). 
 		success(function(data,status)

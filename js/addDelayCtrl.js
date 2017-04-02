@@ -7,6 +7,11 @@ var mainApp=angular.module('mainApp', []);
  		if(Data.loginstatus==1)
  			window.location.href="employeesRegistration.html";
  	});*/
+ 	$http.post("bin/check.php").success(function(data,status){
+ 	Data=angular.fromJson(data);
+ 	if(Data.loginstatus==0)
+ 			window.location.href="index.html";
+ 	});
  	 $scope.airportid="";
  	 $scope.airportList=["LXI","LKO"];
  	/* $http.get("bin/airport_list.php"). 

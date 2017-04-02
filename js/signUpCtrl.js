@@ -1,19 +1,25 @@
  var mainApp=angular.module('mainApp', []);
  mainApp.controller("signUpCtrl",function ($scope,$http) {
  	// body...
- 	$scope.firstName="";
- 	$scope.lastName="";
+ 	$scope.firstname="";
+
  	$scope.userName="";
  	$scope.password="";
+ 	$http.post("bin/check.php").success(function(data,status){
+ 	Data=angular.fromJson(data);
+ 	if(Data.loginstatus==1)
+ 			window.location.href="flightTracking.html";
+ 	});
  	$scope.signUp=function()
  	{
- 		//alert("sign Up");
- 		if($scope.firstName!=""&&$scope.lastName!=""&&$scope.userName!=""&&$scope.password!="")
+ 		alert("sign Up");
+ 		if($scope.name!=""&&$scope.userName!=""&&$scope.password!="")
  		{
- 			$http.post("bin/signUp.php",{firstName:$scope.firstName,
- 										lastName:$scope.lastName,
- 										password:$scope.password,
- 										userName:$scope.userName
+ 			$http.post("bin/signUp.php",{name:$scope.name,password:$scope.password
+ 										 ,firebase:1,
+ 										 email:$scope.userName
+ 										 ,usermode:$scope.userMode
+ 										 ,mobile:$scope.mobile
  										}).success(function(data,status){
  										Data=angular.fromJson(data);
  										if(Data.signupstatus==1)

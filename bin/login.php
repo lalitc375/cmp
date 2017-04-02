@@ -1,6 +1,6 @@
 <?php
 include("serverInfo.php");
-$connection = new mysqli($db_hostname,$db_username,$db_password,$db_database);
+$connection = new mysqli($server,$suname,$password,$database);
 if($connection->connect_error) die($connection->connect_error);
 session_start();
 
