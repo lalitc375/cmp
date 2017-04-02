@@ -19,16 +19,16 @@
     
     <!-- Include all compiled plugins (below), or include individual files as needed -->
    
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar" style="background:blue;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">CPM</a>
+      <a class="navbar-brand" href="#" style="color:White;">CPM</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Create Event</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
+    <ul class="nav navbar-nav" style="float:right;">
+      <li class="active"><a href="flightTracking.html" style="color:White;">Flight Tracking</a></li>
+      <li><a href="createEvent.html" style="color:White;">Create Event</a></li>
+      <li><a href="addDelay.html" style="color:White;">Add Delay</a></li>
+      <li><a href="cabsPresent.html" style="color:White;">Cab Details</a></li>
     </ul>
   </div>
 </nav>
@@ -47,31 +47,32 @@
       <input type="text" name="" ng-model="inputDate.month"> /
       <input type="text" name="" ng-model="inputDate.year"> 
      </div>
-      <button type="button" class="btn btn-default" ng-click="getFlights()">Get Flight</button>
+      <button type="button" class="btn btn-primary btn btn-lg" style="margin-top:-25px;margin-left:630px;" ng-click="getFlights()">Get Flight</button>
       <div  ng-show="flag">
-        Select Flight <br>
+        <br><br><br><h3>Select Flight</h3> <br>
         <br>
+        
      
           <select ng-model="flightId" >
             <option ng-repeat="x in flightList">{{x}}</option>
           </select>
-       <br>  
-        <button type="button" class="btn btn-default" ng-click="getDelay()">Get Flight</button>
-        <table>
-          <tr>
-          <td>
+       <br>
+        <button type="button" class="btn btn-primary" ng-click="getDelay()" style="margin-top:4px;margin-left:630px;">Get Status</button>
+        <table class="table table-striped">
+          
+          <thead>
+            <tr><th>
             Schedule Departure
-          </td>
-          <td>
-            Delay in Schedule Departure
-          </td>
-          <td>
+          </th>
+            <th>Delay in Schedule Departure</th>
+          
+          <th>
             Schedule Arrival
-          </td>
-           <td>
+          </th>
+           <th>
             Delay in Schedule Arrival
-          </td> 
-          </tr>
+          </th> 
+          </thead>
           <tr ng-repeat="x in flightData">
             <td>
             {{x.schedule_departure}}
