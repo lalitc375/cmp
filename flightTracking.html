@@ -56,7 +56,37 @@
             <option ng-repeat="x in flightList">{{x}}</option>
           </select>
        <br>  
-        {{flightId}}
+        <button type="button" class="btn btn-default" ng-click="getDelay()">Get Flight</button>
+        <table>
+          <tr>
+          <td>
+            Schedule Departure
+          </td>
+          <td>
+            Delay in Schedule Departure
+          </td>
+          <td>
+            Schedule Arrival
+          </td>
+           <td>
+            Delay in Schedule Arrival
+          </td> 
+          </tr>
+          <tr ng-repeat="x in flightData">
+            <td>
+            {{x.schedule_departure}}
+            </td>
+            <td>
+            {{x.delay_in_schedule_departure}}
+            </td>
+            <td>
+            {{x.schedule_arrival}}
+            </td>
+            <td>
+             {{x.delay_in_schedule_arrival}}
+            </td>
+        </table>
+
       </div>
 
       
