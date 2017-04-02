@@ -19,37 +19,39 @@
     
     <!-- Include all compiled plugins (below), or include individual files as needed -->
    
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar" style="background:blue;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">CPM</a>
+      <a class="navbar-brand" href="#" style="color:white;">CPM</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Create Event</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
+    <ul class="nav navbar-nav" style="float:right;">
+      <li><a href="flightTracking.html" style="color:white;">FlightTracking</a></li>
+      <li><a href="createEvent.html" style="color:white;">CreateEvent</a></li>
+      <li><a href="addDealy.html" style="color:white;">Add Delay</a></li>
+      <li><a href="cabsPresent.html" style="color:white;">Cabs Details</a></li>
+    <li><a href="#" style="float:right;">logout</a></li>
+    
     </ul>
   </div>
 </nav>
   <div class="container">
   <div class="row">
-      <h5>Select Airport</h5>
+      <h3>Select Airport</h3>
       <br>
      
           <select ng-model="airportId" >
             <option ng-repeat="x in airportList">{{x}}</option>
           </select>
        <br>    
-      <h5> Date of Pickup/ Visit</h5>
+      <h3> Date of Pickup/ Visit</h3>
       <br>
       <input type="text" name="" ng-model="inputDate.day"> /
       <input type="text" name="" ng-model="inputDate.month"> /
       <input type="text" name="" ng-model="inputDate.year"> 
      </div>
-      <button type="button" class="btn btn-default" ng-click="getFlights()">Get Flight</button>
+      <button type="button" class="btn btn-success btn btn-lg" ng-click="getFlights()">Get Flight</button>
       <div  ng-show="flag">
-        Select Flight <br>
+       <h3> Select Flight</h3> <br>
         <br>
      
           <select ng-model="flightId" >
