@@ -1,92 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Pushpak</title>
-	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/angular-min.js"></script>
-    <script type="text/javascript" src="js/loginCtrl.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-
-    <style type="text/css">
-    	body {
-   		display: flex;
-    	min-height: 100vh;
-    	flex-direction: column;
-  		}
-
-  		main {
-    	flex: 1 0 auto;
-  		}
-  	
-    </style>
-    <script type="text/javascript" >
-		(function($){
-  		$(function(){
-    	$('.button-collapse').sideNav();
-  		}); // end of document ready
-		})(jQuery); // end of jQuery name space
-	</script>
-		
-</head>
-<body ng-app="mainApp" ng-controller="loginCtrl">
-	<header>
-	<div class="navbar-fixed green darken-1">
-    <nav class="#3d5afe indigo accent-3" role="navigation">
-    <!--Lalit Chauhan-->
-
-	  <div class="container"> 
-      <div class="nav-wrapper">
-      	<a class="button-collapse" data-activates="nav-mobile" href="#">
-		<i class="material-icons">menu</i>
-		</a>
-      	<a href="flightTracking.html">CMP</a>
-      	
-        <ul class="right hide-on-med-and-down">
-          <!-- <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li> -->
-          <li ><a href="flightTracking.html">Flight Tracking</a></li>
-          <li><a href="createEvent.html">Create Event</a></li>
-          <li ><a href="addDelay.html">Add Delay</a></li>
-          <li class="active"> <a href="cabsPresent.html">Cab Details</a></li>
-          <li > <a href="bin/logout.php">Logout</a></li>
-      <!--     <li><a href="Proj.html">Profile</a></li> -->
-          
-        </ul>
-        <ul id="nav-mobile" class="side-nav" style="left: -250px;">
-         <li ><a href="flightTracking.html">Flight Tracking</a></li>
-          <li><a href="createEvent.html">Create Event</a></li>
-          <li ><a href="addDelay.html">Add Delay</a></li>
-          <li class="active"> <a href="cabsPresent.html">Cab Details</a></li>
-          <li> <a href="bin/logout.php">Logout</a></li>
-      </ul>
-      </div>
-      </div>
-    </nav>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
    
-  	
-  	</div>
-	</header>
-	<main ng-app="mainApp" ng-controller="loginCtrl">
-		<div class="container">
-		
-			
-		</div>
-	</main>
-	<footer>
+    <title>Pushpak</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+      <script type="text/javascript" src="js/angular-min.js"></script>
+     <script type="text/javascript" src="js/createEventCtrl.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+  </head>
+  <body ng-app="mainApp" ng-controller="createEventCtrl">
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+   
+    <nav class="navbar" style="background:blue;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" style="color:white;">CPM</a>
+    </div>
+    <ul class="nav navbar-nav" style="float:right;">
+      <li><a href="flightTracking.html" style="color:white;">FlightTracking</a></li>
+      <li><a href="createEvent.html" style="color:white;">CreateEvent</a></li>
+      <li><a href="addDealy.html" style="color:white;">Add Delay</a></li>
+      <li><a href="cabsPresent.html" style="color:white;">Cabs Details</a></li>
+    <li><a href="#" style="float:right;">logout</a></li>
+    
+    </ul>
+  </div>
+</nav>
   <div class="container">
-    <div class="row">
-    <div class="col s4 offset-s4">
-      <h6 class="center-align"><a class="center-align" style="color: #000000" href="http://madewithlove.org.in" target="_blank">Made with <span style="color: #e74c3c"  >&hearts;</span> in India</a>
-      </h6>
-    </div>
-      
-    </div>
+  <div class="row">
+      <h3>Select Airport</h3>
+      <br>
+     
+          <select ng-model="airportId" >
+            <option ng-repeat="x in airportList">{{x}}</option>
+          </select>
+       <br>    
+      <h3> Date of Pickup/ Visit</h3>
+      <br>
+      <input type="text" name="" ng-model="inputDate.day"> /
+      <input type="text" name="" ng-model="inputDate.month"> /
+      <input type="text" name="" ng-model="inputDate.year"> 
+     </div>
+      <button type="button" class="btn btn-success btn btn-lg" ng-click="getFlights()">Get Flight</button>
+      <div  ng-show="flag">
+       <h3> Select Flight</h3> <br>
+        <br>
+     
+          <select ng-model="flightId" >
+            <option ng-repeat="x in flightList">{{x}}</option>
+          </select>
+       <br> 
+          <input type="text" name="" ng-model="distance" placeholder="In Kilometers">
+
+        <br>   
+     
+           <button type="button" class="btn btn-success btn btn-lg"  ng-click="createEvent()">Create Reminder</button>
+       </div>
+  </div>
     
   </div>
-  </footer>
-</body>
+
+    
+
+
+  </body>
 </html>
