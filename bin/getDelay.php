@@ -22,7 +22,7 @@ if($args->at_airport_id!=""  && $args->date!="" &&$args->flight_id!="")
 /*	echo $query;*/
 	$run=$connection->query($query);
 	$result=array();
-	/*echo $count=$run->num_rows;	*/
+	$count=$run->num_rows;
 	if($count>0){
 		for($j=0;$j<$count;$j++){
 			$row=$run->fetch_assoc();
