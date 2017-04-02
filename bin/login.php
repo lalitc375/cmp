@@ -16,7 +16,7 @@ if($args->email_id!=""  && $args->password!="")
 	if($run->num_rows==1)
 	{
 		$row=$run->fetch_assoc();
-		$_SESSION['user_id'] = 1;
+		$_SESSION['user_id'] =$row['user_id'];
 		$_SESSION['email_id']=$row['email_id'];
 		$_SESSION['mobile_number']=$row['mobile_number'];
 		$arr = array('loginstatus' => 1);
