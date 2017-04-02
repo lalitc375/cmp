@@ -19,16 +19,18 @@ if($args->at_airport_id!=""  && $args->date!="" &&$args->flight_id!="")
 //	$flight =array();
 		
 	$query="select * from operational_data where  at_airport_id='$airport' and flight_id='$flight'and data_date='$date'";
+/*	echo $query;*/
 	$run=$connection->query($query);
-	$count=$run->num_rows;	
+	$result=array();
+	/*echo $count=$run->num_rows;	*/
 	if($count>0){
 		for($j=0;$j<$count;$j++){
 			$row=$run->fetch_assoc();
-		echo $row['delay_in_schedule_departure'];
-		echo $row['delay_in_schedule_arrival'];
+
+		array_push($result, $row);	
 	}
 
-	
+	echo json_encode($result);
 	}
 
 	else
