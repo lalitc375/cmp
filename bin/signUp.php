@@ -13,7 +13,7 @@ if($con->connect_error) die($con->connect_error);
 $args->firebase=1;
 if($args->name!="" && $args->mobile!="" && $args->password!="" && $args->firebase!="" && $args->email!="" && $args->usermode!="")
 	{
-		$query="select * from user where name='".$args->name."'and password='".md5($args->password)."' ";
+		$query="select * from user where email_id='".$args->email."'";
 		$result = $con->query($query);
 		//$run=mysql_query($query);
 
