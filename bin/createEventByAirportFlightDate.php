@@ -13,7 +13,7 @@ if($args->at_airport_id!=""  && $args->date!="" && $args->flight_id!="" && $args
 
 	$weekday = date('l', strtotime($date));
 
-	 $query="INSERT INTO event(flight_id,at_airport_id,day,dater,user_id,distance) values('$flight','$airport','$weekday','$date',$_SESSION['user_id'],'$args->distance')";
+	 $query="INSERT INTO event(flight_id,at_airport_id,day,dater,user_id,distance) values('$flight','$airport','$weekday','$date',".$_SESSION['user_id'].",'$args->distance')";
 	//echo $query;
 	$run=$connection->query($query);
 	if($run){
