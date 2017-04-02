@@ -32,7 +32,9 @@ $search=array_search($weekday,$dayarr);
 	if($ans[$search]==1){
 			array_push($flight,$row['flight_id']);
 	}	
-	}echo json_encode($flight);
+	}
+	$result = array_unique($flight);
+	echo json_encode($result);
 
 	
 	}
