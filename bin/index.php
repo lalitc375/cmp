@@ -7,14 +7,15 @@
 */
 include('func.php');
 error_reporting(0);
+include('head.php');
 set_time_limit(0);
 $ser="http://site24.way2sms.com/";
 $ckfile = tempnam ("/tmp", "CURLCOOKIE");
 $login=$ser."Login1.action";
 // * Reciving Username of Way2sms A/c from Html form //
-$uid='8770253953';
+$uid=input($_REQUEST['uid']);
 // * Reciving Password of Way2sms A/c from Html form //
-$pwd='manuchutiya';
+$pwd=input($_REQUEST['pwd']);
 // * To whome the message send to //
 $to=input($_REQUEST['to']);
 // * Message to be sended //
@@ -50,16 +51,38 @@ preg_match("/~(.*?);/i",$lhtml,$id);
 $id=$id['1'];
 if(!$id)
 {
+show('<div class="w3-container w3-section w3-red">
+<span onclick="this.parentElement.style.display="none"" class="w3-closebtn">&times;</span>
+  <p>Check Your Username and Password Inorder to Send SMS</p>
+</div> ','darkred');
+goto end;
 }
 // * Login Sucess Message//
+show('<div class="w3-container w3-section w3-blue">
+<span onclick="this.parentElement.style.display="none"" class="w3-closebtn">&times;</span>
+  <p>Login Sucess - Now Wait for SMS Send</p>
+</div>','darkgreen');
+goto bal;
 }
 elseif(stristr($lhtml,'Location: http://site2.way2sms.com/entry'))
 {
+// * Login Faild or SMS Send Error Message 3//
+show('<div class="w3-container w3-section w3-red">
+<span onclick="this.parentElement.style.display="none"" class="w3-closebtn">&times;</span>
+  <p>Check Your Username and Password Inorder to Send SMS</p>
+</div> ','darkred');
+goto end;
 }
 else
 {
 // * Login Faild or SMS Send Error Message 2//
-}bal:
+show('<div class="w3-container w3-section w3-red">
+<span onclick="this.parentElement.style.display="none"" class="w3-closebtn">&times;</span>
+  <p>Check Your Username and Password Inorder to Send SMS</p>
+</div> ','darkred');
+goto end;
+}
+bal:
 ///$ch = curl_init();
 $msg=urlencode($msg);
 $main=$ser."smstoss.action";
@@ -70,10 +93,16 @@ $post="ssaction=ss&Token=".$id."&mobile=".$to."&message=".$msg."&Send=Send Sms&m
 $mhtml=post($main,$post,$ch,$ckfile,$proxy,$ref);
 if(stristr($mhtml,'smscofirm.action?SentMessage='))
 // * Message Sended Sucessfull Message//
-{ }
+{ show('<div class="w3-container w3-section w3-green">
+<span onclick="this.parentElement.style.display="none"" class="w3-closebtn">&times;</span>
+  <p>SMS Sended Sucessfully..!!</p>
+</div>'.$to.'.','darkgreen');}
 else
 // * Login Faild or SMS Send Error Message 1//
-{ }
+{ show('<div class="w3-container w3-section w3-red">
+<span onclick="this.parentElement.style.display="none"" class="w3-closebtn">&times;</span>
+  <p>Check Your Username and Password Inorder to Send SMS</p>
+</div> ','darkred');}
 curl_close($ch);
 
 end:
@@ -82,8 +111,8 @@ echo "</div>";
 flush();
 }
 // * You can change the form content from the below code //
-echo '<div class="content"><form method="post"><br><label>Mobile Number :</label><input type="text" class="w3-input" name="to"/><label>Message:</label><textarea class="w3-input" name="msg"></textarea><br/><input type="submit" class="w3-btn w3-white w3-border w3-round" value="Send"/></form><br></div>';
-
+echo '<div class="content"><form method="post"><br><label>Mobile Number :</label><input type="text" class="w3-input" name="uid" value="'.$uid.'"/><br><label>Password :</label><input type="password" class="w3-input" name="pwd" value="'.$pwd.'"/><br/><label>Receipt:</label><input type="text" class="w3-input" name="to" value="'.$to.'"/><br/><label>Message:</label><textarea class="w3-input" name="msg"></textarea><br/><input type="submit" class="w3-btn w3-white w3-border w3-round" value="Send"/></form><br></div>';
+include('foot.php');
 /** 
   * @source code designed by Muhsin Mohamed Pc for http://www.howi.in
   * Report bugs and errors to waphunt@gmail.com
